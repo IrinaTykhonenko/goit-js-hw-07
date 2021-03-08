@@ -26,10 +26,20 @@ const ingredients = [
   "Зелень",
   "Приправы",
 ];
+const ulRef = document.querySelector("#ingredients");
+console.log(ulRef);
+const liItem = (ingredient) => {
+  const ingredientElement = document.createElement("li");
+  ingredientElement.textContent = ingredient;
 
-const ingredientsList = document.querySelector("#ingredients");
-ingredients.forEach((ingredient) => {
-  const listElement = document.createElement("li");
-  listElement.textContent = ingredient;
-  ingredientsList.appendChild(listElement);
-});
+  return ingredientElement;
+};
+
+const renderUl = (ingredients) => {
+  const ingredientsElements = ingredients.map((ingredient) =>
+    liItem(ingredient)
+  );
+  ulRef.append(...ingredientsElements);
+};
+
+renderUl(ingredients);
